@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "jira-dev-tool": "^1.7.61",
     "@types/qs": "^6.9.6",
     "eslint-config-prettier": "^8.3.0",
     "husky": ">=6",
@@ -59,5 +60,8 @@
   },
   "lint-staged": {
     "*.{js,css,md,ts,tsx}": "prettier --write"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
