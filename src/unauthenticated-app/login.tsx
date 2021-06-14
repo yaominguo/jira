@@ -1,6 +1,7 @@
 import { useAuth } from "context/auth-context";
 import React from "react";
 import { Form, Input, Button } from "antd";
+import { useAsync } from "utils/use-async";
 
 export const LoginScreen = ({
   onError,
@@ -8,9 +9,10 @@ export const LoginScreen = ({
   onError: (error: Error) => void;
 }) => {
   const { login } = useAuth();
+  const { run, isLoading } = useAsync(undefined, { throwOnError: true });
 
   const handleSubmit = (values: { username: string; password: string }) =>
-    login(values).catch(onError);
+    run(login(values)).catch(onError);
 
   return (
     <Form onFinish={handleSubmit}>
@@ -27,7 +29,12 @@ export const LoginScreen = ({
         <Input placeholder={"密码"} type="password" />
       </Form.Item>
       <Form.Item>
-        <Button htmlType={"submit"} block={true} type={"primary"}>
+        <Button
+          loading={isLoading}
+          htmlType={"submit"}
+          block={true}
+          type={"primary"}
+        >
           登录
         </Button>
       </Form.Item>
