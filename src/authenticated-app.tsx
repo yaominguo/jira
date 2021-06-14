@@ -6,7 +6,8 @@ import { Row } from "components/lib";
 import { ReactComponent as Logo } from "assets/software-logo.svg";
 import { Dropdown, Menu, Button } from "antd";
 import { Navigate, Route, Routes } from "react-router";
-import { Project } from "screens/project-list/project";
+import { Project } from "screens/project";
+import { resetRoute } from "utils";
 
 export const AuthenticatedApp = () => {
   return (
@@ -28,7 +29,9 @@ const PageHeader = () => {
   return (
     <Header between={true}>
       <HeaderLeft gap={true}>
-        <Logo width={"18rem"} color={"rgb(38,132,255)"} />
+        <Button type={"link"} onClick={resetRoute}>
+          <Logo width={"18rem"} color={"rgb(38,132,255)"} />
+        </Button>
         <h3>项目</h3>
         <h3>用户</h3>
       </HeaderLeft>
