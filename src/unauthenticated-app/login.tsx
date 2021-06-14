@@ -2,11 +2,15 @@ import { useAuth } from "context/auth-context";
 import React from "react";
 import { Form, Input, Button } from "antd";
 
-export const LoginScreen = () => {
+export const LoginScreen = ({
+  onError,
+}: {
+  onError: (error: Error) => void;
+}) => {
   const { login } = useAuth();
 
   const handleSubmit = (values: { username: string; password: string }) =>
-    login(values);
+    login(values).catch(onError);
 
   return (
     <Form onFinish={handleSubmit}>

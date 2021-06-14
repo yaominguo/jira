@@ -2,11 +2,15 @@ import { useAuth } from "context/auth-context";
 import React from "react";
 import { Form, Input, Button } from "antd";
 
-export const RegisterScreen = () => {
+export const RegisterScreen = ({
+  onError,
+}: {
+  onError: (error: Error) => void;
+}) => {
   const { register } = useAuth();
 
   const handleSubmit = (values: { username: string; password: string }) =>
-    register(values);
+    register(values).catch(onError);
 
   return (
     <Form onFinish={handleSubmit}>
