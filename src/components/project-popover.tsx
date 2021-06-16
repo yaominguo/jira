@@ -4,7 +4,7 @@ import React from "react";
 import { useProject } from "utils/project";
 
 export const ProjectPopover = (props: { projectButton: JSX.Element }) => {
-  const { data: projects, isLoading } = useProject();
+  const { data: projects } = useProject();
   const pinedProjects = projects?.filter((project) => project.pin);
 
   const content = (
