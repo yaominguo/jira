@@ -3,8 +3,7 @@ import { SearchPanel } from "./search-panel";
 import { List } from "./list";
 import { useDebounce, useDocumentTitle } from "utils";
 import styled from "@emotion/styled";
-import { Typography } from "antd";
-import { useProject } from "utils/project";
+import { useProjects } from "utils/project";
 import { useUsers } from "utils/user";
 import { useProjectModal, useProjectsSearchParams } from "./util";
 import { ButtonNoPadding, ErrorBox, Row } from "components/lib";
@@ -12,7 +11,7 @@ import { ButtonNoPadding, ErrorBox, Row } from "components/lib";
 export const ProjectList = () => {
   useDocumentTitle("项目列表", false);
   const [param, setParam] = useProjectsSearchParams();
-  const { isLoading, error, data: list } = useProject(useDebounce(param, 500));
+  const { isLoading, error, data: list } = useProjects(useDebounce(param, 500));
   const { data: users } = useUsers();
   const { open } = useProjectModal();
   return (
