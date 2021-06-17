@@ -7,17 +7,12 @@ import { Typography } from "antd";
 import { useProject } from "utils/project";
 import { useUsers } from "utils/user";
 import { useProjectModal, useProjectsSearchParams } from "./util";
-import { ButtonNoPadding, Row } from "components/lib";
+import { ButtonNoPadding, ErrorBox, Row } from "components/lib";
 
 export const ProjectList = () => {
   useDocumentTitle("项目列表", false);
   const [param, setParam] = useProjectsSearchParams();
-  const {
-    isLoading,
-    error,
-    data: list,
-    retry,
-  } = useProject(useDebounce(param, 500));
+  const { isLoading, error, data: list } = useProject(useDebounce(param, 500));
   const { data: users } = useUsers();
   const { open } = useProjectModal();
   return (
@@ -29,15 +24,8 @@ export const ProjectList = () => {
         </ButtonNoPadding>
       </Row>
       <SearchPanel param={param} setParam={setParam} users={users || []} />
-      {error ? (
-        <Typography.Text type={"danger"}>{error.message}</Typography.Text>
-      ) : null}
-      <List
-        refresh={retry}
-        dataSource={list || []}
-        users={users || []}
-        loading={isLoading}
-      />
+      <ErrorBox error={error} />
+      <List dataSource={list || []} users={users || []} loading={isLoading} />
     </Container>
   );
 };
