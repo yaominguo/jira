@@ -13,7 +13,7 @@ export const Project = () => {
       <Routes>
         <Route path={"/kanban"} element={<Kanban />} />
         <Route path={"/epic"} element={<Epic />} />
-        <Navigate to={window.location.pathname + "/kanban"} />
+        <Navigate to={window.location.pathname + "/kanban"} replace={true} />
       </Routes>
     </div>
   );
