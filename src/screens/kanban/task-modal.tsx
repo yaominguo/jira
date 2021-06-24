@@ -20,8 +20,8 @@ export const TaskModal = () => {
   );
 
   const onCancel = () => {
-    close();
     form.resetFields();
+    close();
   };
   const onOk = async () => {
     await editTask({ ...editingTask, ...form.getFieldsValue() });

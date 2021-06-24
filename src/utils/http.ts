@@ -6,7 +6,7 @@ const BaseUrl = process.env.REACT_APP_API_URL;
 
 interface Config extends RequestInit {
   token?: string;
-  data?: { [key: string]: unknown };
+  data?: { [key: string]: any };
 }
 export const http = async (
   url: string,
