@@ -9,7 +9,7 @@ import right from "assets/right.svg";
 import { useDocumentTitle } from "utils";
 import { ErrorBox } from "components/lib";
 
-export const UnauthenticatedApp = () => {
+export default function UnauthenticatedApp() {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   useDocumentTitle("请登录注册以继续");
@@ -32,7 +32,7 @@ export const UnauthenticatedApp = () => {
       </ShadowCard>
     </Container>
   );
-};
+}
 
 const Title = styled.h2`
   margin-bottom: 2.4rem;

@@ -14,8 +14,7 @@ export const cleanObject = (obj: { [key: string]: unknown }) => {
 };
 
 export const useMount = (callback: () => void) => {
-  // eslint-disable-next-line
-  useEffect(() => callback(), []);
+  useEffect(() => callback(), [callback]);
 };
 
 export const useDebounce = <T>(value: T, delay?: number): T => {
