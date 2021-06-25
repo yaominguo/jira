@@ -28,7 +28,12 @@ export const ProjectList = () => {
       </Row>
       <SearchPanel param={param} setParam={setParam} users={users || []} />
       <ErrorBox error={error} />
-      <List dataSource={list || []} users={users || []} loading={isLoading} />
+      <List
+        style={{ overflowY: "auto" }}
+        dataSource={list || []}
+        users={users || []}
+        loading={isLoading}
+      />
     </ScreenContainer>
   );
 };

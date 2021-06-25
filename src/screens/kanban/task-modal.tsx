@@ -29,6 +29,7 @@ export const TaskModal = () => {
   };
 
   useEffect(() => {
+    form.resetFields();
     form.setFieldsValue(editingTask);
   }, [form, editingTask]);
 
